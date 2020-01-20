@@ -38,7 +38,7 @@ xml을 이용한 스프링 설정을 보면 컨테이너가 생성할 객체를 
 스프링은 BeanFactory와 ApplicationContext의 두 가지 타입의 컨테이너를 제공한다.
 
 -                       beanFactory(interface)
--ListableBeanFactory(interface)  HierarchicalBeanFactory(interFace) 
+- ListableBeanFactory(interface)  HierarchicalBeanFactory(interFace) 
 -                       ApplicationContext(interFace)
 -                       ConfigurableApplicationContext(interFace)
 
@@ -62,7 +62,38 @@ BreanFactory계열의 인터페이스만 구현 클래스는 단순히 컨테이
 - AuthenticationService: 아이디/암호를 입력 받아 인증을 수행한다. userRepositoy로 부터 User객체를 구한 뒤,User객체의 matchPassword()메서드를 이용해서 아이디/암호 일치 여부 판단한다. 아이디/암호가 일치하지 않은 경우 authFailLogger의 insertBadPw() 메서드를 실행해서 실패 기록을 남긴다.
 - PasswrodChangeService와 마찬가리로 UserRepository로 부터 User객체를 구하고, 그 user 객체의 changePassword()메서드를 이용헤서 암호 변경한다.
 
+## xml을 이용한 DI 설정
+- 설정 정보로 사용할 XML 파일을 작성하는 것 매우 간단.
+<bean>태그를 이용해서 컨테이너가 생성 빈 객체를 지정해주고, <property>태그나 <constructor-arg> 태그를 이용해서 객체가 필요로 하는 값을 설정해주면된다.
 
+-  스프링 XML 설정의 기본 골격
+예)
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/maven-v4_0_0.xsd">
+
+    <bean id="빈식별자" class="생성할 객체의 완전한 클래스 이름">
+        <property name="프로퍼티 이름">
+            <value>프로퍼티 값</value>
+        </property>
+        <property name="프로퍼티 이름" ref="다른 빈 식별자"/>
+    </bean>
+
+    <bean id="빈식별자1" class="생성할 객체의 완전한 클래스 이름">
+        <consturct-arg><value>인자값</value></constructor-arg>
+        <construct-arg><ref bean="다른 빈 식별자"/></construct-arg>
+    </bean>
+</beans>
+```
+- <bean> 태그 : 생성할 객체 지정
+<bean> 태그는 스프링 컨테이너가 생성할 객체에 대한 정보를 지정할 때 사용한다.
+<bean> 태그의 주요 속성 id와 class다.
+
+* class 속성은 스핑 컨터이너가 생성할 객체의 클래스 이름을 값으로 갖는다.
+이때 클래스의 이름ㅇ  패키지 이름을 포함한 완전한 클래스 이름이어야한다.
+* id 속성으로 지정한 빈의 이름 다른 bean 태그에서 참조 할때 사용
 
 
 

@@ -9,11 +9,12 @@ public class PasswordChangeService {
 	}
 
 	public void ChangePassword(String userId, String oldPw, String newPw) {
-		User user = userRepository.findUserById(id);
+		User user = userRepository.findUserById(userId);
 
 		if(user == null) {
 			throw new UserNotFoundException();
-			user.changePassword(oldPw, newPw);
 		}
+
+		user.changePassword(oldPw, newPw);
 	}
 }
