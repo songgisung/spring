@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="js/imageService.js"></script>
+        <title>ImageServiceTest Web page</title>
+    </head>
+    <body>
+        <p>テストイメージリサイズ</p>
+        <div>
+            <form id="FILE_FORM" method="post" enctype="multipart/form-data" action=""><br>
+                <label>width:</label><br>
+                <input type="text" id="widthdata" name="widthname" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4"><br>
+                <label>height:</label><br>
+                <input type="text" id="heightdata" name="heightname" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="4"><br>
+                <input type="file" id="imagefile" name="FILE_TAG"><br>
+                <!-- <a type="button" class="resizebtn">イメージリサイズ</a> -->
+                <input type="submit" value="imageReSize"/>
+            </form>            
+        </div>
+    </body>
+</html>
