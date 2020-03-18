@@ -2,9 +2,9 @@ spring boot
 gradle
 
 
-RESTAPI
+## RESTAPI
 
-「機能」
-イメージサイズ変更
+## 「機能」
+### イメージサイズ変更
 
 「説明」
