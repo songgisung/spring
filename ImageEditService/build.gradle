@@ -40,6 +40,9 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+    // https://mvnrepository.com/artifact/com.levigo/gwt-awt
+	compile group: 'com.levigo', name: 'gwt-awt', version: '0.0.1'
+
     // https://mvnrepository.com/artifact/commons-codec/commons-codec
 	compile group: 'commons-codec', name: 'commons-codec', version: '1.10'
 }
