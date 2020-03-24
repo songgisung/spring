@@ -1,16 +1,10 @@
 package com.image.edit.services;
-import java.io.File;
-import java.io.FileOutputStream;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.image.edit.models.resize.ResizeRequest;
 
-@Service
+//@Service
 public class ImageResizeService {
 
-	@Autowired
+	//@Autowired
 	private TransImageData transImageData;
 
 //	public ObjectMapper resize(ResizeRequest req) throws Exception {
@@ -33,13 +27,13 @@ public class ImageResizeService {
 
 	private void byteArrayConvertToImageFile(String imagedata) throws Exception {
 		//テストイメージ保存
-		File test =  new File("/Users/sgs/Desktop/testimage.png");
-		test.createNewFile();
-
-		//イメージの中にデータ入力
-		FileOutputStream image = new FileOutputStream(imagedata);
-		image.write(imagedata.getBytes());
-		image.close();
+//		File test =  new File("/Users/sgs/Desktop/testimage.png");
+//		test.createNewFile();
+//
+//		//イメージの中にデータ入力
+//		FileOutputStream image = new FileOutputStream(imagedata);
+//		image.write(imagedata.getBytes());
+//		image.close();
 	}
 
 }

@@ -4,9 +4,7 @@ import java.util.Base64;
 import java.util.Base64.Decoder;
 import java.util.Base64.Encoder;
 
-import org.springframework.stereotype.Service;
-
-@Service
+//@Service
 public class TransImageData {
 
 	public byte[] getStringToByte (String imageBinaryString) throws Exception {
@@ -33,9 +31,8 @@ public class TransImageData {
         // base64 decoding
 		Decoder decoder = Base64.getDecoder();
         byte[] decodeByte = decoder.decode(base64String);
-
+        //decodeByte.toString()
         return "test";
-        //return decodeByte.toString();
 	}
 
 	public void test(String imageString) throws Exception {
