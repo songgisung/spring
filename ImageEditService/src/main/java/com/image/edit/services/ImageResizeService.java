@@ -1,21 +1,45 @@
 package com.image.edit.services;
+import java.io.File;
+import java.io.FileOutputStream;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.image.edit.models.resize.ResizeRequest;
-
 
 @Service
 public class ImageResizeService {
 
-	public ObjectMapper resize(ResizeRequest req) {
+	@Autowired
+	private TransImageData transImageData;
 
-		ObjectMapper objectMapper = new ObjectMapper();
+//	public ObjectMapper resize(ResizeRequest req) throws Exception {
+//
+//		//byte[] imageData = transImageData.getStringToByte(req.getImageBinary());
+//		String temp = transImageData.getDecodeString(req.getImageBinary());
+//		ObjectMapper objectMapper = new ObjectMapper();
+//
+//		byteArrayConvertToImageFile(temp);
+//
+////		objectMapper.writeValue(new File("target/car.json"), car);
+////		return objectMapper.writeValue(new File("target/car.json"), car);
+//
+//		return objectMapper;
+//	}
 
-//		objectMapper.writeValue(new File("target/car.json"), car);
-//		return objectMapper.writeValue(new File("target/car.json"), car);
+	public void testFIle(ResizeRequest req) throws Exception {
+		byteArrayConvertToImageFile(transImageData.getDecodeString(req.getImageBinary()));
+	}
 
-		return objectMapper;
+	private void byteArrayConvertToImageFile(String imagedata) throws Exception {
+		//テストイメージ保存
+		File test =  new File("/Users/sgs/Desktop/testimage.png");
+		test.createNewFile();
+
+		//イメージの中にデータ入力
+		FileOutputStream image = new FileOutputStream(imagedata);
+		image.write(imagedata.getBytes());
+		image.close();
 	}
 
 }

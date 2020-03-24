@@ -29,6 +29,14 @@ public class TransImageData {
 		return encodedString;
 	}
 
+	public String getDecodeString (String base64String) throws Exception {
+        // base64 decoding
+		Decoder decoder = Base64.getDecoder();
+        byte[] decodeByte = decoder.decode(base64String);
+
+        return "test";
+        //return decodeByte.toString();
+	}
 
 	public void test(String imageString) throws Exception {
 		String target = imageString;

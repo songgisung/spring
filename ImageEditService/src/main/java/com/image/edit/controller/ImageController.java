@@ -10,27 +10,24 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.image.edit.models.resize.ResizeRequest;
 import com.image.edit.models.resize.ResizeResponse;
-import com.image.edit.services.ImageResizeService;
-import com.image.edit.services.TransImageData;
 
 @RestController
 public class ImageController {
 
 	@Autowired
-	private ImageResizeService imageResizeService;
+//	private ImageResizeService imageResizeService;
 
 	@RequestMapping(method = RequestMethod.POST, value = "/resize")
 	public ResponseEntity<ResizeResponse> imageReSize(@RequestBody ResizeRequest resizeReq) throws Exception{
 
 		System.out.println("in resize api ");
 		System.out.println(resizeReq.getImageName());
+		System.out.println(resizeReq.getImageWidth());
+		System.out.println(resizeReq.getImageHeight());
 		System.out.println(resizeReq.getImageBinary());
 
-		TransImageData invertImg = new TransImageData();
-
-		String temp = resizeReq.getImageBinary();
-
-		invertImg.test(temp);
+		//本サービス　イメージリサイズ
+//		imageResizeService.testFIle(resizeReq);
 
 //		imageResizeService
 		ResizeResponse resizeRes = new ResizeResponse();
